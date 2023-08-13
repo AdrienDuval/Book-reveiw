@@ -1,10 +1,11 @@
-
 @extends('Layouts.app')
 
 @section('content')
     <h1 class="mb-10 text-2xl font-bold text-gray-900 dark:text-white">Book</h1>
-    <form action="">
-
+    <form method="GET" action="{{ route('books.index') }}" class="mb-4 flex items-center space-x-2">
+        <input type="text" class="input h-10" name="title" placeholder="Search by book title" value="{{ request('title') }}">
+        <button class="btn h-10">Search</button>
+        <a href="{{ route('books.index') }}" class="btn btn-ghost h-10">Clear</a>
     </form>
     <ul>
         @forelse ($books as $book)
