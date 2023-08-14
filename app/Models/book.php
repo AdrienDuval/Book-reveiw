@@ -35,7 +35,7 @@ class book extends Model
         ], 'rating')->orderBy('reviews_avg_rating', 'desc');
     }
 
-    private function dataRangeFilter(Builder $query, $from = null, $to = null)
+    public function dataRangeFilter(Builder $query, $from = null, $to = null)
     {
         if ($from && !$to) {
             $query->where('created_at', '>=', $from);
