@@ -21,6 +21,13 @@ class book extends Model
         return $query->where('title', 'LIKE', '%' . $title . '%');
     }
 
+    public function scopeWithAvgRating(Builder $query, $from = null, $to = null): Builder|QueryBuilder
+    {
+        return $query->withAvg([
+            'reviews' => fn (Builder $q) => $this->dataRangeFilter($q, $from, $to)
+        ], 'rating');
+    }
+
     public function scopePopular(Builder $query, $from = null, $to = null): Builder|QueryBuilder
     {
         return $query->withCount([
@@ -30,9 +37,7 @@ class book extends Model
 
     public function scopeHighestRated(Builder $query, $from = null, $to = null): Builder|QueryBuilder
     {
-        return $query->withAvg([
-            'reviews' => fn (Builder $q) => $this->dataRangeFilter($q, $from, $to)
-        ], 'rating')->orderBy('reviews_avg_rating', 'desc');
+        return $query->WithAvgRating()->orderBy('reviews_avg_rating', 'desc');
     }
 
     public function dataRangeFilter(Builder $query, $from = null, $to = null)
