@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="mb-4">
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
         <h1 class="sticky top-0 mb-2 text-2xl">{{ $book->title }}</h1>
 
         <div class="book-info">
@@ -9,6 +10,7 @@
             <div class="book-rating flex items-center">
                 <div class="mr-2 text-sm font-medium text-slate-700">
                     {{ number_format($book->reviews_avg_rating, 1) }}
+                    <x-star-rating :rating="$book->reviews_avg_rating" />
                 </div>
                 <span class="book-review-count text-sm text-gray-500">
                     {{ $book->reviews_count }} {{ Str::plural('review', $book->reviews_count) }}
