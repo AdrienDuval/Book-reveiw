@@ -29,7 +29,8 @@ class book extends Model
     }
 
 
-    public function scopeWithReviewsCount(Builder $query, $from = null, $to = null) : Builder|QueryBuilder {
+    public function scopeWithReviewsCount(Builder $query, $from = null, $to = null): Builder|QueryBuilder
+    {
         return $query->withCount([
             'reviews' => fn (Builder $q) => $this->dataRangeFilter($q, $from, $to)
         ])->orderBy('reviews_count', 'desc');
@@ -81,10 +82,8 @@ class book extends Model
     }
 
     protected static function booted()
-{
-    static::updated(fn (Book $book) => cache()->forget('book:' . $book->id));
-    static::deleted(fn (Book $book) => cache()->forget('book:' . $book->id));
+    {
+        static::updated(fn (Book $book) => cache()->forget('book:' . $book->id));
+        static::deleted(fn (Book $book) => cache()->forget('book:' . $book->id));
+    }
 }
-}
-
-
