@@ -7,7 +7,7 @@
             value="{{ request('title') }}">
         <input type="hidden" name="filter" value="{{ request('filter') }}">
         <button class="btn h-10">Search</button>
-        <a href="{{ route('books.index') }}" class="btn btn-ghost h-10">Clear</a>
+        <a href="{{ route('books.index') }}" class="btn btn-ghost h-10 bg-red-500">Clear</a>
     </form>
     <div class="filter-container mb-4 flex">
         @php
