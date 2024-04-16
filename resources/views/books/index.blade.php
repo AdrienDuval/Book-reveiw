@@ -1,4 +1,4 @@
-@extends('Layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="mb-10 text-2xl font-bold text-gray-900 dark:text-white">Books</h1>
