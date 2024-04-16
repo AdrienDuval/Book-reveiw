@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('books.index') }}" class="flex mb-4 text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Back</a>
+        <a href="{{ route('books.index') }}"
+            class="inline-flex mb-4 bg-blue-500 text-white py-2 px-4 rounded transition duration-500 hover:bg-blue-100">←
+            Back</a>
         <h1 class="sticky top-0 mb-2 text-2xl">{{ $book->title }}</h1>
 
         <div class="book-info">
@@ -18,14 +20,14 @@
             </div>
         </div>
     </div>
-<div class="mb-4">
-    <a href="{{ route('books.reviews.create', $book) }}" class="btn btn-primary">Add a Review!</a>
-</div>
+    <div class="mb-4">
+        <a href="{{ route('books.reviews.create', $book) }}" class="btn btn-primary">Add a Review!</a>
+    </div>
     <div>
         <h2 class="mb-4 text-xl font-semibold">Reviews</h2>
         <ul>
             @forelse ($book->reviews as $review)
-                <li class="book-item mb-4"> 
+                <li class="book-item mb-4">
                     <div>
                         <div class="mb-2 flex items-center justify-between">
                             {{-- <div class="font-semibold">{{ $review->rating }}</div> --}}
